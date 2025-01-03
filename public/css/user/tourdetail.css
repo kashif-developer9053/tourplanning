@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background-color: rgb(236, 236, 236);
+}
+
+img{
+    width: 100%;
+    display: block;
+}
+
+.tour-info{
+    background-color: aliceblue;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+}
+
+.tour-sche{
+
+}

@@ -1,0 +1,65 @@
+.body-profile{
+    background-color: rgb(255, 255, 255);
+    padding: 1rem .5rem 2rem .5rem;
+    border: 3px solid rgb(204, 208, 210);
+    border-radius: 15px;
+}
+
+.order span{
+    font-size: 1.3rem;
+    color: rgb(193, 0, 0);
+}
+
+.body-container{
+    background-color: aliceblue;
+}
+
+.order{
+    background-color: white;
+    padding: 7px;
+    border-radius: 15px;
+    transition: .5s ease;
+}
+
+.order h5{
+    transition: 1s ease;
+    margin-top:10px;
+}
+
+.order h5:hover{
+    background-color: rgb(232, 210, 210);
+    transition: .3s ease;
+    transform: translateX(2%);
+    padding: 10px;
+    box-shadow: 2px 2px 5px 5px rgb(141, 141, 141);
+    border-radius: 3px 20px 20px 3px;
+}
+
+
+
+.feedback{
+    background-color:rgb(234, 223, 209);
+    padding: 7px;
+    border-radius: 15px;
+    transition: .5s ease;
+
+    color: rgb(0, 0, 0);
+}
+
+.feedback h5{
+    transition: 1s ease;
+    margin-top:10px;
+}
+
+.feedback h5:hover{
+    color: black;
+    background-color: rgb(232, 225, 194);
+    transition: .3s ease;
+    transform: translateX(2%);
+    padding: 10px;
+    box-shadow: 2px 2px 5px 5px rgb(255, 255, 255);
+    border-radius: 3px 20px 20px 3px;
+}
+
+
+

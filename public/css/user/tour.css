@@ -1,0 +1,6 @@
+.filter{
+    background-color: rgb(238, 238, 238);
+    border: 10px solid rgba(0, 0, 0, 0);
+    border-radius: 10px 10px 10px 10px;
+    max-height: 700px;
+}

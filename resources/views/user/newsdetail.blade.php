@@ -1,73 +1,72 @@
 @extends('userlayout')
 
 @section('content')
-    
-
-    <div class="container mt-5 mb-5 pt-5">
-
-        @foreach ($news as $n)
-            <div class="row">
-            <div class="col-sm-7">
-
-                <div class="row">
-                  <h2>{{$n->news_name}}</h2>
-                </div>
-                <div class="row">
-                    @php
-                    $date=strtotime($n->news_date);
-                    @endphp
-                        <span style="font-weight:bold">Travel News <span style="font-weight: normal"> {{date("d-m-Y",$date)}}</span></span>  
-                </div>
-                <div class="row mt-4 mb-4">
-                    <span>{{$n->newstitle}}</span>
-                </div>
-                <div class="row mt-2 mb-4">
-                        <a href=""><img width="700px" height="400px" src="{{asset('images/'.$n->img2)}}" alt=""></a>
-                </div>
-                <div class="row">
-                    {{$n->news_content}}
-                </div>
-                <div class="row mt-4 mb-4">
-                    <a href=""><img width="700px" height="400px" src="{{asset('images/'.$n->img3)}}" alt=""></a>
-                </div>
-                <div class="row mb-5">
-                  {{$n->content2}}
-                </div>
+<div class="container mt-5 mb-5 pt-5">
+    <div class="row">
+        <!-- Main News Section -->
+        <div class="col-lg-8">
+            @foreach ($news as $n)
+            <div class="card mb-5 shadow-lg border-0">
+                <img class="card-img-top rounded-top" src="{{ asset('images/'.$n->img2) }}" alt="{{ $n->news_name }}">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-primary" style="font-family: 'Poppins', sans-serif; font-size: 2.5rem;">
+                        {{ $n->news_name }}
+                    </h2>
+                    <p class="text-muted mb-3" style="font-size: 1rem;">
+                        <strong>Travel News:</strong> {{ date("d-m-Y", strtotime($n->news_date)) }}
+                    </p>
+                    <p class="card-text text-dark" style="font-size: 1.2rem; line-height: 1.8;">
+                        {{ $n->newstitle }}
+                    </p>
+                    <p class="card-text text-dark" style="font-size: 1.2rem; line-height: 1.8;">
+                        {{ $n->news_content }}
+                    </p>
+                    <div class="text-center my-4">
+                        <img class="img-fluid rounded shadow" src="{{ asset('images/'.$n->img3) }}" alt="News Image">
+                    </div>
+                    <p class="card-text text-dark" style="font-size: 1.2rem; line-height: 1.8;">
+                        {{ $n->content2 }}
+                    </p>
                     <hr>
-                    Travel Company TOURVIET <br>
-                    590 CMT8 ward 11 District 3 Ho Chi Minh city <br>
-                    Tel: (028) 3822 8898 | Hotline: 1900 1839 <br>
-                    Fanpage: https://www.fb.com/tourviet
-            </div>
-
-            <div class="col-sm-5 mt-5">
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="row">
-                    <h3>Related Tour</h3>
+                    <div class="text-muted">
+                        <strong>Travel Company: TOURVIET</strong><br>
+                        590 CMT8 Ward 11, District 3, Ho Chi Minh City<br>
+                        Tel: (028) 3822 8898 | Hotline: 1900 1839<br>
+                        Fanpage: <a href="https://www.fb.com/tourviet" target="_blank" class="text-primary">https://www.fb.com/tourviet</a>
+                    </div>
                 </div>
-                @foreach ($news2 as $n2)
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <a href="{{url('user/newsdetail/'.$n2->news_id)}}"><img style="border: 1px solid rgba(0, 0, 0, 0);border-radius:7px" width="250px" height="150px" src="{{asset('images/'.$n2->img1)}}" alt=""></a>
+            </div>
+            @endforeach
+        </div>
+
+        <!-- Related Tours Section -->
+        <div class="col-lg-4">
+            <div class="card shadow-lg border-0">
+                <div class="card-body">
+                    <h3 class="text-primary mb-4" style="font-family: 'Poppins', sans-serif;">Related Tours</h3>
+                    @foreach ($news2 as $n2)
+                    <div class="card mb-4 shadow-sm border-0">
+                        <div class="row g-0">
+                            <div class="col-4">
+                                <a href="{{ url('user/newsdetail/'.$n2->news_id) }}">
+                                    <img class="img-fluid rounded-start" src="{{ asset('images/'.$n2->img1) }}" alt="Related Tour Image">
+                                </a>
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger" style="font-family: 'Poppins', sans-serif; font-size: 1.2rem;">{{ $n2->news_name }}</h5>
+                                    <p class="card-text text-muted small">{{ $n2->news_date }}</p>
+                                    <a href="{{ url('user/newsdetail/'.$n2->news_id) }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <h5 class="text-danger">{{$n2->news_name}}</h5>
-                        <small>{{$n2->news_date}}</small>
-                    </div>
-               </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-        @endforeach
-        
     </div>
-
-
-
-
+</div>
 @endsection
 
 @section('title')
@@ -75,9 +74,44 @@
 @endsection
 
 @section('linkcss')
-    
-@endsection
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Poppins', sans-serif;
+    }
 
-@section('name')
-    
+    .card-title {
+        font-weight: 600;
+    }
+
+    .text-primary {
+        color: #0d6efd !important;
+    }
+
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .shadow-lg {
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .img-fluid {
+        border-radius: 10px;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .stretched-link {
+        position: relative;
+    }
+
+    .card-img-top {
+        max-height: 300px;
+        object-fit: cover;
+    }
+</style>
 @endsection

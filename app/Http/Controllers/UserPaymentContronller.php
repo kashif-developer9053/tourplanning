@@ -14,8 +14,10 @@ class UserPaymentContronller extends Controller
         return view('user.payment')->with('data',$data);
     }
 
-    public function paymentPost(Request $request){
-        $data = Schedule::where('schedule_id',$request->schedule_id)->get();
+    public function paymentPost(Request $request)
+{
+    try {
+        $data = Schedule::where('schedule_id', $request->schedule_id)->get();
         $person1 = $request->person1;
         $person2 = $request->person2;
         $person3 = $request->person3;
@@ -26,8 +28,7 @@ class UserPaymentContronller extends Controller
         $price3 = $request->price3;
         $price4 = $request->price4;
 
-        $amount = ($person1 * $price1) + ($person2 * $price2)
-        + ($person3 * $price3) + ($person4 * $price4);
+        $amount = ($person1 * $price1) + ($person2 * $price2) + ($person3 * $price3) + ($person4 * $price4);
 
         $current = new Carbon();
 
@@ -57,7 +58,38 @@ class UserPaymentContronller extends Controller
         $order->save();
 
         $passenger = $person1 + $person2 + $person3 + $person4;
-        return view('user.payment' ,
-        ['passenger'=>$passenger,'person1'=>$person1,'person2'=>$person2,'person3'=>$person3,'person4'=>$person4,'price1'=>$price1,'price2'=>$price2,'price3'=>$price3,'price4'=>$price4,'amount'=>$amount,'tour_name'=>$request->tour_name,'data'=>$data]);
+        session()->flash('success', 'Booking submitted successfully!');
+        return redirect()->back()->with([
+            'passenger' => $passenger,
+            'person1' => $person1,
+            'person2' => $person2,
+            'person3' => $person3,
+            'person4' => $person4,
+            'price1' => $price1,
+            'price2' => $price2,
+            'price3' => $price3,
+            'price4' => $price4,
+            'amount' => $amount,
+            'tour_name' => $request->tour_name,
+            'data' => $data,
+        ]);
+    } catch (\Exception $e) {
+        session()->flash('error', 'There was an error processing your booking. Please try again.');
+        return redirect()->back();
     }
+}
+
+public function bankPayment()
+{
+    return view('user.bankPayment');
+}
+
+public function bankPaymentPost(Request $request)
+{
+    // Simulate failed payment
+    session()->flash('error', 'Card invalid. Please try again.');
+    return redirect()->back();
+}
+
+
 }

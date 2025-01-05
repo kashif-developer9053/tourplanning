@@ -52,7 +52,13 @@
 
     <nav class="navbar">
         <a style="text-decoration:none" href="{{url('user/home')}}">Home</a>
+
+        <a href="{{url('ai/map')}}">Map Assist</a>
         <a href="{{url('user/tour')}}">packages</a>
+
+        <a href="{{url('ai')}}">AI Assistant</a>
+        <a href="{{url('user/news')}}">News</a>
+
         <a href="{{url('user/contact')}}">contact</a>
         <a href="{{url('user/about')}}">About</a>
         

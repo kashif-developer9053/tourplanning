@@ -60,7 +60,6 @@
         <a href="{{url('user/news')}}">News</a>
 
         <a href="{{url('user/contact')}}">contact</a>
-        <a href="{{url('user/about')}}">About</a>
         
 
 @if (session('userName'))

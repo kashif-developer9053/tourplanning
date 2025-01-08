@@ -1,38 +1,51 @@
 @import url('http://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-:root{
-    --main-color :#e34848;
+
+:root {
+    --main-color: #e34848;
     --color-dark: #1D2231;
     --text-grey: #8390A2;
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     list-style-type: none;
     text-decoration: none;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-.sidebar{
-     width: 345px;
-     position: fixed;
-     left: 0;
-     top: 0;
-     height: 100%;
-     background-color: #ebebeb;
-     z-index: 100;
-     transition: width 300ms;
+.sidebar {
+    width: 345px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: #ebebeb;
+    z-index: 100;
+    transition: width 300ms;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.sidebar-brand{
+.sidebar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    padding: 5px 0;
+    border-radius: 10px;
+}
+
+.sidebar-brand {
     height: 90px;
     padding: 1.5rem 0rem 1rem 2rem;
     color: var(--main-color);
-    transition: .5s ease-in-out ;
+    transition: .5s ease-in-out;
 }
 
-.sidebar-brand span{
+.sidebar-brand span {
     display: inline-block;
     padding-right: 1rem;
     color: rgb(0, 103, 137);
@@ -48,7 +61,7 @@
     padding-left: 1rem;
 }
 
-.sidebar-menu a{
+.sidebar-menu a {
     padding-left: 1rem;
     display: block;
     color: var(--main-color);
@@ -60,70 +73,70 @@
     background-color: rgb(255, 255, 255);
     padding: .5rem 0 .5rem 2rem;
     font-size: 1.5rem;
-    border-radius:30px 0px 0px 30px;
+    border-radius: 30px 0px 0px 30px;
     transition: .2s ease;
-    color: black; 
-    box-shadow: 2px 2px 5px 2px  rgb(138, 138, 138);
+    color: black;
+    box-shadow: 2px 2px 5px 2px rgb(138, 138, 138);
 }
 
-.sidebar-menu.collapse a:hover{
+.sidebar-menu.collapse a:hover {
     background-color: rgb(255, 255, 255);
     font-size: 1.5rem;
     border-radius: 0px 30px 30px 0px;
     transition: .2s ease;
-    color: black; 
-    box-shadow: 2px 2px 5px 2px  rgb(138, 138, 138);
+    color: black;
+    box-shadow: 2px 2px 5px 2px rgb(138, 138, 138);
 }
 
-.sidebar-menu a span:first-child{
+.sidebar-menu a span:first-child {
     font-size: 1.5rem;
     padding-right: 1.5rem;
 }
 
-#nav-toggle:checked + .sidebar {
+#nav-toggle:checked+.sidebar {
     width: 70px;
 }
 
-#nav-toggle:checked + .sidebar .sidebar-brand,
-#nav-toggle:checked + .sidebar li{
+#nav-toggle:checked+.sidebar .sidebar-brand,
+#nav-toggle:checked+.sidebar li {
     padding-left: 1rem;
 }
 
-#nav-toggle:checked + .sidebar li a{
+#nav-toggle:checked+.sidebar li a {
     padding-left: 0rem;
 }
 
-#nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
-#nav-toggle:checked + .sidebar li a span:last-child{
+#nav-toggle:checked+.sidebar .sidebar-brand h2 span:last-child,
+#nav-toggle:checked+.sidebar li a span:last-child {
     position: absolute;
     transform: translateX(-500%);
     transition: 1s ease;
 }
-.sidebar .sidebar-brand h2 span:last-child
-{
+
+.sidebar .sidebar-brand h2 span:last-child {
     transition: .3s ease;
 }
 
-#nav-toggle:checked ~ .main-content {
+#nav-toggle:checked~.main-content {
     margin-left: 70px;
 }
 
-#nav-toggle:checked ~ .main-content header{
+#nav-toggle:checked~.main-content header {
     width: calc(100% - 70px);
     left: 70px;
 }
 
-.main-content{
+.main-content {
     transition: margin-left 400ms;
     margin-left: 345px;
 }
 
-header{
+header {
     background-color: #fff;
     display: flex;
     justify-content: space-between;
     padding: 1.2rem 1rem .8rem 2rem;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     position: fixed;
     left: 345px;
     top: 0;
@@ -133,27 +146,27 @@ header{
     transition: left 400ms;
 }
 
-#nav-toggle{
+#nav-toggle {
     display: none;
 }
 
-header h2{
+header h2 {
     color: #222;
 }
 
-header label span{
+header label span {
     font-size: 1.7rem;
     padding-right: 1rem;
 }
 
-main{
+main {
     margin-top: 60px;
     padding: 2rem 1.5rem;
     background: #f1f5f9;
     min-height: calc(100vh - 60px);
 }
 
-.user-wrapper{
+.user-wrapper {
     display: flex;
     align-items: center;
 }
@@ -164,146 +177,145 @@ main{
     margin-right: 1rem;
 }
 
-.user-wrapper small{
+.user-wrapper small {
     display: inline-block;
     counter-reset: var(--text-grey);
     margin-top: -10px !important;
 }
 
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 1200px) {
 
     .sidebar {
         width: 70px;
     }
-    
+
     .sidebar .sidebar-brand,
-    .sidebar li{
+    .sidebar li {
         padding-left: 1rem;
     }
-    
-    .sidebar li a{
+
+    .sidebar li a {
         padding-left: 0rem;
     }
-    
+
     .sidebar .sidebar-brand h2 span:last-child,
-    .sidebar li a span:last-child{
+    .sidebar li a span:last-child {
         position: absolute;
         transform: translateX(-400%);
         transition: 1s ease;
     }
-    .sidebar .sidebar-brand h2 span:last-child
-    {
+
+    .sidebar .sidebar-brand h2 span:last-child {
         transition: .3s ease;
     }
-    
+
     .sidebar-menu a:hover {
         background-color: rgb(255, 255, 255);
         padding-left: 0;
         font-size: 1.5rem;
-        border-radius:30px 0px 0px 30px;
+        border-radius: 30px 0px 0px 30px;
         transition: .2s ease;
-        color: black; 
-        box-shadow: 2px 2px 5px 2px  rgb(138, 138, 138);
+        color: black;
+        box-shadow: 2px 2px 5px 2px rgb(138, 138, 138);
     }
 
-     .main-content {
+    .main-content {
         margin-left: 70px;
     }
-    
-     .main-content header{
-        width: calc(100% - 70px) ;
+
+    .main-content header {
+        width: calc(100% - 70px);
         left: 70px;
     }
 
-    #nav-toggle:checked ~ .main-content header{
+    #nav-toggle:checked~.main-content header {
         width: calc(100% - 345px);
         left: 345px;
     }
-    
-    #nav-toggle:checked + .sidebar{
+
+    #nav-toggle:checked+.sidebar {
         left: 0 !important;
         z-index: 100;
         width: 345px;
     }
-    
-    #nav-toggle:checked + .sidebar .sidebar-brand
-    {
+
+    #nav-toggle:checked+.sidebar .sidebar-brand {
         padding-left: 2rem;
     }
-    
-    #nav-toggle:checked + .sidebar li a{
+
+    #nav-toggle:checked+.sidebar li a {
         padding-left: 1rem;
     }
-    
-    #nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
-    #nav-toggle:checked + .sidebar li a span:last-child{
+
+    #nav-toggle:checked+.sidebar .sidebar-brand h2 span:last-child,
+    #nav-toggle:checked+.sidebar li a span:last-child {
         position: absolute;
         transform: translateX(0%);
-        transition: .5s ease;  
+        transition: .5s ease;
     }
-    
-}
-
-@media only screen and (max-width: 960px) {
 
 }
+
+@media only screen and (max-width: 960px) {}
 
 @media only screen and (max-width: 768px) {
-    .user-wrapper h4{
+    .user-wrapper h4 {
         font-size: .8rem;
     }
-    .user-wrapper small{
+
+    .user-wrapper small {
         font-size: .8rem;
     }
-    header h2{
+
+    header h2 {
         font-size: 1.2rem;
     }
-    header label span{
+
+    header label span {
         font-size: 1.2rem;
         padding-right: .5rem;
     }
-    .sidebar{
+
+    .sidebar {
         left: -100% !important;
     }
 
-    .main-content{
+    .main-content {
         width: 100%;
         margin-left: 0;
     }
-    header{
+
+    header {
         width: 100% !important;
         left: 0 !important;
     }
 
-    #nav-toggle:checked + .sidebar{
+    #nav-toggle:checked+.sidebar {
         left: 0 !important;
         z-index: 100;
         width: 345px;
     }
-    
-    #nav-toggle:checked + .sidebar .sidebar-brand,
-    #nav-toggle:checked + .sidebar:hover li
-    {
+
+    #nav-toggle:checked+.sidebar .sidebar-brand,
+    #nav-toggle:checked+.sidebar:hover li {
         padding-left: 2rem;
-        
+
     }
-    
-    #nav-toggle:checked + .sidebar li a{
+
+    #nav-toggle:checked+.sidebar li a {
         padding-left: 1rem;
     }
-    
-    #nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
-    #nav-toggle:checked + .sidebar li a span:last-child{
+
+    #nav-toggle:checked+.sidebar .sidebar-brand h2 span:last-child,
+    #nav-toggle:checked+.sidebar li a span:last-child {
         position: absolute;
         transform: translateX(0%);
-        transition: .5s ease;  
+        transition: .5s ease;
     }
-    #nav-toggle:checked ~ .main-content {
+
+    #nav-toggle:checked~.main-content {
         margin-left: 0 !important;
     }
 }
 
-@media only screen and (max-width:560px) {
-
-}
-
+@media only screen and (max-width:560px) {}

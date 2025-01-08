@@ -4,7 +4,8 @@
 
 <div class="sign-container right_panel" id="container">
   <div class="form-container sign-up-container">
-    <form action="checkRegister">
+   <form action="{{ route('user.checkRegister') }}" method="POST">
+    @csrf
       <h3>Create Account</h3>
       <input type="text" placeholder="Name" name="name" value="{{old('name')}}"/>
       @error('name')
